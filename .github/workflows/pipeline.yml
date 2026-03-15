@@ -20,12 +20,14 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Run Tests
         run: npm test
         env:
-          VITE_API_URL: http://localhost:5000 
+          VITE_BACKEND: http://localhost:5000
 
       - name: Build Project
         run: npm run build
+        env:
+          VITE_BACKEND: http://localhost:5000

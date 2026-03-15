@@ -10,8 +10,6 @@ services:
       - .:/app
       - /app/node_modules
     environment:
-      
-      - VITE_API_URL=http://host.docker.internal:5000
-      
+      - VITE_BACKEND=http://host.docker.internal:5000
       - WATCHPACK_POLLING=true 
     command: npm run dev -- --host
