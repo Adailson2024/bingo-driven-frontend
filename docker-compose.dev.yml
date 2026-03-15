@@ -1,0 +1,17 @@
+services:
+  frontend-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bingo-frontend-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      
+      - VITE_API_URL=http://host.docker.internal:5000
+      
+      - WATCHPACK_POLLING=true 
+    command: npm run dev -- --host

@@ -1,0 +1,15 @@
+services:
+  frontend-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bingo-frontend-test
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://host.docker.internal:5001
+      - NODE_ENV=test
+      - CI=true
+    
+    command: npm test
