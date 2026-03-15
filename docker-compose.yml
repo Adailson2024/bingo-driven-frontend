@@ -3,19 +3,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      # Permite passar a URL do backend durante o build se necessário
-      args:
-        - VITE_BACKEND=http://host.docker.internal:5000
     container_name: bingo-frontend-dev
     ports:
       - "5173:5173"
     volumes:
       - .:/app
-      - /app/node_modules # Impede que o node_modules local sobrescreva o do container
+      - /app/node_modules
     environment:
-      # URL da API para comunicação interna ou externa
-      - VITE_BACKEND=http://host.docker.internal:5000
-      # Essencial para Hot Reload funcionar no Windows/WSL2
+      - VITE_BACKEND=${VITE_BACKEND:-http://host.docker.internal:5000}
       - WATCHPACK_POLLING=true 
-    # O comando expõe a porta para o host para que você acesse no navegador do Windows
     command: npm run dev -- --host

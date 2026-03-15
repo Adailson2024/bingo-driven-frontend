@@ -23,18 +23,19 @@ jobs:
         run: npm install
 
       - name: Run Tests
+        # Se falhar aqui, o pipeline para e não faz o push para o Docker Hub
         run: npm test
         env:
-          VITE_BACKEND: http://localhost:5000
+          VITE_BACKEND: ${{ secrets.VITE_BACKEND }}
 
       - name: Build Project
         run: npm run build
         env:
-          VITE_BACKEND: http://localhost:5000
+          VITE_BACKEND: ${{ secrets.VITE_BACKEND }}
 
-  # NOVO JOB: Publicação automatizada no Docker Hub
   publish-docker:
     needs: build-and-test
+    # Só publica se for um push na main (CD)
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
@@ -52,7 +53,6 @@ jobs:
         with:
           context: .
           push: true
-          # Injeta a variável de backend no momento do build da imagem
           build-args: |
             VITE_BACKEND=${{ secrets.VITE_BACKEND }}
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/bingo-driven-frontend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/bingo-frontend:latest
