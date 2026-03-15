@@ -23,7 +23,6 @@ jobs:
         run: npm install
 
       - name: Run Tests
-        # Se falhar aqui, o pipeline para e não faz o push para o Docker Hub
         run: npm test
         env:
           VITE_BACKEND: ${{ secrets.VITE_BACKEND }}
@@ -35,7 +34,6 @@ jobs:
 
   publish-docker:
     needs: build-and-test
-    # Só publica se for um push na main (CD)
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
