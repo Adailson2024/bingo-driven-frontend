@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-test:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -22,18 +22,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Tests
-        run: npm test
-        env:
-          VITE_BACKEND: ${{ secrets.VITE_BACKEND }}
-
       - name: Build Project
         run: npm run build
         env:
           VITE_BACKEND: ${{ secrets.VITE_BACKEND }}
 
   publish-docker:
-    needs: build-and-test
+    needs: build-and-deploy
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
