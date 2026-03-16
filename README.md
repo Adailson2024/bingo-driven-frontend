@@ -176,5 +176,5 @@ bingo-driven-frontend/
 | Projeto | Repositório |
 |---------|-------------|
 | Front-end | *este repositório* |
-| Back-end | * (https://github.com/Adailson2024/bingo-driven-backend)*|
+| Back-end | https://github.com/Adailson2024/bingo-driven-backend|
 
