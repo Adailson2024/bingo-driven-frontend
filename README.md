@@ -8,7 +8,6 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
-link do deploy: https://bingo-driven-frontend-cyan.vercel.app/
 
 # Bingo Driven - Front-end
 
@@ -18,8 +17,8 @@ Interface web para o sistema de sorteio e conferência de cartelas do **Bingo Dr
 
 | Serviço | URL |
 |---------|-----|
-| Front-end (Vercel) | https://bingo-driven-frontend-cyan.vercel.app |
-| Back-end (Render) | *adicionar link do deploy do back-end* |
+| Front-end (Vercel) | https://bingo-driven-frontend-cyan.vercel.app/ |
+| Back-end (Render) | https://bingo-driven-backend-zttw.onrender.com/ |
 
 ## Tecnologias
 
